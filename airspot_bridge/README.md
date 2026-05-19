@@ -41,3 +41,4 @@ Default OwnTone credentials:
 - The add-on uses host networking for local discovery.
 - Spotify Connect and AirPlay devices must be reachable from the Home Assistant network.
 - The Spotify audio FIFO is `/music/librespot-java` for compatibility with earlier setups.
+- If an AirPlay speaker disconnects after playback starts, check `/config/owntone/owntone.conf` and make sure `audio` uses `type = "disabled"`.
