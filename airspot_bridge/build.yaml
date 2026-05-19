@@ -1,0 +1,5 @@
+build_from:
+  amd64: ghcr.io/linuxserver/daapd:28.10-ls172
+  aarch64: ghcr.io/linuxserver/daapd:28.10-ls172
+args:
+  GO_LIBRESPOT_VERSION: 0.7.1

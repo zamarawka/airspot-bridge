@@ -1,0 +1,25 @@
+log_level: info
+device_name: AirSpot Bridge
+device_type: speaker
+
+audio_backend: pipe
+audio_output_pipe: /music/librespot-java
+audio_output_pipe_format: s16le
+bitrate: 320
+volume_steps: 64
+initial_volume: 33
+normalisation_disabled: false
+normalisation_pregain: 3
+external_volume: false
+disable_autoplay: false
+
+zeroconf_enabled: true
+zeroconf_port: 0
+zeroconf_backend: avahi
+credentials:
+  type: zeroconf
+  zeroconf:
+    persist_credentials: false
+
+server:
+  enabled: false

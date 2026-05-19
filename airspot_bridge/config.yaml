@@ -1,0 +1,24 @@
+name: AirSpot Bridge
+version: 29.0.0-go-librespot
+slug: airspot_bridge
+description: Bridge Spotify Connect to AirPlay speakers through OwnTone
+arch:
+  - aarch64
+  - amd64
+map:
+  - config:rw
+  - media:rw
+host_network: true
+host_dbus: false
+host_ipc: false
+hassio_api: false
+auth_api: false
+hassio_role: default
+audio: false
+init: false
+startup: application
+boot: auto
+webui: http://[HOST]:[PORT:3689]
+stage: experimental
+url: https://github.com/zamarawka/airspot-bridge
+homeassistant: "0.110"

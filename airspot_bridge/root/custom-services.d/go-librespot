@@ -1,0 +1,16 @@
+#!/usr/bin/with-contenv bash
+
+export HOME=/config/owntone/go-librespot
+export XDG_CONFIG_HOME=/config/owntone
+
+for _ in $(seq 1 60); do
+  if [ -f /config/owntone/go-librespot/config.yml ] && [ -p /music/librespot-java ] && [ -S /run/dbus/system_bus_socket ]; then
+    sleep 2
+    exec go-librespot --config_dir /config/owntone/go-librespot
+  fi
+
+  sleep 1
+done
+
+echo "go-librespot config or audio FIFO was not created in time" >&2
+exit 1

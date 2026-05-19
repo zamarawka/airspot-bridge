@@ -1,0 +1,38 @@
+#!/usr/bin/with-contenv bash
+
+set -e
+
+LIBRESPOT_PIPE="/music/librespot-java"
+LIBRESPOT_METADATA_PIPE="${LIBRESPOT_PIPE}.metadata"
+GO_LIBRESPOT_CONFIG_DIR="/config/owntone/go-librespot"
+GO_LIBRESPOT_CONFIG="${GO_LIBRESPOT_CONFIG_DIR}/config.yml"
+OWNTONE_CONFIG="/config/owntone/owntone.conf"
+
+mkdir -p /music /config/owntone/dbase_and_logs/cache "${GO_LIBRESPOT_CONFIG_DIR}"
+
+if [ -e "${LIBRESPOT_PIPE}" ] && [ ! -p "${LIBRESPOT_PIPE}" ]; then
+  rm "${LIBRESPOT_PIPE}"
+fi
+
+if [ -p "${LIBRESPOT_PIPE}" ]; then
+  rm "${LIBRESPOT_PIPE}"
+fi
+
+if [ -e "${LIBRESPOT_METADATA_PIPE}" ] && [ ! -p "${LIBRESPOT_METADATA_PIPE}" ]; then
+  rm "${LIBRESPOT_METADATA_PIPE}"
+fi
+
+if [ -p "${LIBRESPOT_METADATA_PIPE}" ]; then
+  rm "${LIBRESPOT_METADATA_PIPE}"
+fi
+
+mkfifo "${LIBRESPOT_PIPE}"
+mkfifo "${LIBRESPOT_METADATA_PIPE}"
+
+if [ ! -f "${GO_LIBRESPOT_CONFIG}" ]; then
+  cp /defaults/go-librespot.yml "${GO_LIBRESPOT_CONFIG}"
+fi
+
+if [ ! -f "${OWNTONE_CONFIG}" ]; then
+  cp /defaults/owntone.conf "${OWNTONE_CONFIG}"
+fi
